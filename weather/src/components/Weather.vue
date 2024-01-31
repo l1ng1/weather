@@ -6,7 +6,7 @@
             
             <div class="input">
             <p>Инпут для ввода города</p>
-            <input type="text" placeholder="your city">
+            <input type="text" placeholder="your city" v-model.lazy="city_name">
             <button @click="getData()">Search</button>
             </div>
 
@@ -45,8 +45,8 @@
                     </div>
 
                     <div class="wind">
-                        <h2>The speed of wind:</h2>
-                        <h2>{{ info.wind_speed }}</h2>
+                        <p>The speed of wind:</p>
+                        <p>{{ info.wind_speed }}</p>
                     </div>
 
                 </div>
@@ -66,6 +66,7 @@ export default {
     components:{loading},
     data(){
         return{
+            city_name:'',
             date:'',
             store:useWeatherStore(),
             info:{
@@ -81,7 +82,8 @@ export default {
     },
     methods:{
        async getData(){
-           await this.store.getData();//запрос в store
+        let name = this.city_name
+           await this.store.getData(name);//запрос в store
             if(await this.store.data != null){ //проверка
                 let newData = this.store.data;//упрощение
                 this.info = {
@@ -108,6 +110,49 @@ export default {
 
 
 <style scoped>
+
+.full{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(238, 217, 246);
+    padding: 20px;
+    border-radius: 20px;
+    margin-top:20px;
+    color:black;
+}
+
+
+.city,.wind{
+ display: flex;
+ justify-content: space-evenly;
+ font-size: 17px;
+ align-items: center;
+}
+
+
+.temp{
+    display: flex;
+    justify-content: space-between;
+}
+
+.real ,.feels{
+    width: 40%;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(59, 58, 58, 0.546);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
 .main{
     display: flex;
     flex-direction: column;

@@ -11,10 +11,10 @@ export const useWeatherStore = defineStore('counter',{
     getMsg:(state)=>state.msg
   },
   actions:{
-    async getData(){
+    async getData(name){
       this.loading = true;//загрузка начинается
       try {
-        const response = await fetch('http://api.weatherapi.com/v1/current.json?key=76718bf6a90d44b9bc8153803232605&q=London');
+        const response = await fetch('http://api.weatherapi.com/v1/current.json?key=76718bf6a90d44b9bc8153803232605&q='+name);
 
         let data = await response.json();//получаем данные
         console.log(data);
