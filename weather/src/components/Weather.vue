@@ -82,6 +82,7 @@ export default {
     },
     methods:{
        async getData(){
+        console.log(this.city_name)
         let name = this.city_name
            await this.store.getData(name);//запрос в store
             if(await this.store.data != null){ //проверка
@@ -200,7 +201,7 @@ export default {
     flex-direction: column;
     align-items: center;
 }
-.empty div{margin-top:20px;}
+.empty div{margin-top:165px;}
 .empty h2{font-size: 14px;margin-bottom: 50px;}
 
 

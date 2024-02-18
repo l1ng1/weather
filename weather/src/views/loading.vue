@@ -40,7 +40,7 @@ export default {
 <style scoped >
 
 .loader {
-  scale: 3;
+  scale: 8;
   height: 50px;
   width: 40px;
 }
